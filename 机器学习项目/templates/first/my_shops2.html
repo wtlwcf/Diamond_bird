@@ -1,0 +1,138 @@
+{% extends 'first/index.html' %}
+{% load static %}
+
+{% block title %}
+    my_shops2
+{% endblock %}
+
+<link rel="stylesheet" href="{% static 'first/css/my_shops2.css' %}">
+<script src="{% static 'first/js/jquery-3.3.1.min.js' %}"></script>
+<script src="{% static 'first/js/my_shops2.js' %}"></script>
+
+{% block shop_car %}
+    <link rel="stylesheet" href="{% static 'first/css/my_shops.css' %}">
+    <div class="shop_car">
+        <img src="{% static 'first/img/shopcar_sanbu_1.png' %}" alt="">
+    </div>
+{% endblock %}
+
+{% block bodys %}
+    <script src="{% static 'first/js/my_shops2.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'first/css/my_shops2.css' %}">
+    <div class="shopcar_title">
+    	<div class="shopcar_title_left">
+                    </div>
+    </div>
+    <div class="f_car_lst_tlt">
+        <span class="f_car_lst_tlt_01">商品</span>
+        <span class="f_car_lst_tlt_02">主钻</span>
+        <span class="f_car_lst_tlt_03">辅钻</span>
+        <span class="f_car_lst_tlt_04">手寸</span>
+        <span class="f_car_lst_tlt_05">数量</span>
+        <span class="f_car_lst_tlt_06">价格</span>
+        <span class="f_car_lst_tlt_07">操作</span>
+      </div>
+
+
+            <form action="{% url 'info_id' %}" method="post">
+                <div style="width: 60px;float: left;position: absolute;left: 350px;top: 250px;">
+
+                    <div>{% for img in imgs_list %}<a href="#"><img src="{{ img }}" alt="" width="60px" height="60px"></a>
+
+                    <div style="width: 60px;height: 60px;"></div>
+                        {% endfor %}
+                    </div>
+                </div>
+      <div id="shop_have">
+
+            {% for shop in all_shops %}
+                <input type="checkbox" style="position: absolute;margin-top: 5px;margin-left: 0;z-index: 999;width: 20px;height: 20px;" name="box" value="{{ shop.id }}" class="checks">
+            <div id="shop_have_list" style="margin-top: 20px">
+                <span class="shop_have_2"><a href="{% url 'shop_detail' good_id=shop.good_id %} " >{{ shop.good_name }}</a></span>
+                <span class="shop_have_3">{{ shop.main_diamond }}</span>
+                <span class="shop_have_4">{{ shop.assitant_diamond }}</span>
+                <span class="shop_have_5">{{ shop.good_size }}</span>
+{#                <span class="shop_have_6">{{ shop.good_number }}</span>#}
+                <div class="shop_have_6" style="width: 80px;height: 30px;">
+                    <div style="width: 15px;height: 19px;text-align: center;background:rgb(240,240,240);" class="shop_have_6_1"><a href="{% url 'reduce' p_id=shop.id %}">-</a></div>
+                    <input type="text" value="{{ shop.good_number }}" style="width: 30px;" id="shop_num">
+                    <div style="width: 15px;height: 20px;text-align: center;background:rgb(240,240,240);" class="shop_have_6_2"><a href="{% url 'puls' p_id=shop.id %}">+</a></div>
+                </div>
+                <span id="shop_have_7" >{{ shop.good_price }}</span>
+                <a href="{% url 'delete_one' one_id=shop.id %}" class="shop_have_8">删除</a>
+            </div>
+                <hr style="opacity: 0.5;">
+            {% endfor %}
+
+      </div>
+    <div id="clear_car">
+    <span>确定要删除购物车中的所有商品吗?</span>
+    <div class="ensure"><a href="{% url 'clear' %}">确定</a></div>
+    <div class="cancle"><a href="#">取消</a></div>
+    </div>
+        <div style="width: 1200px;height: 100px;" id="end">
+            <div class="clear_shop"><a href="#">清空购物车</a></div>
+            <div class="continue_shop"><a href="{% url 'weding_detail' %}">继续购物</a></div>
+
+                <div class="go_pay" style="display: none"><input type="submit" value="去结算" style="width: 130px;height: 30px;cursor:pointer;background-color:rgb(255,138,129);"></div>
+
+        </div>
+ </form>
+{% endblock %}
+
+
+{% block foot %}
+    <link rel="stylesheet" href="{% static 'first/css/my_shops2.css' %}">
+<div id="box111">
+        <a href="#" class="box11_1"><img src="{% static 'first/img/footer_lnks.jpg' %}" alt=""></a>
+        <div class="box11_2"><img src="{% static 'first/img/logo85x90.jpg' %}" alt=""></div>
+        <div class="box11_3">
+                <span>关于我们</span>
+                <div class="box11_3_1"><a href="#" >品牌简介</a></div>
+                <div class="box11_3_2"><a href="#" >市场合作</a></div>
+                <div class="box11_3_3"><a href="#" >诚聘贤才</a></div>
+                <div class="box11_3_4"><a href="#" >联系我们</a></div>
+                <div class="box11_3_5"><a href="#" >商务加盟</a></div>
+            </div>
+        <div class="box11_4">
+                <span>购物指南</span>
+                <div class="box11_4_1"><a href="#" >购物流程</a></div>
+                <div class="box11_4_2"><a href="#" >订单处理时间</a></div>
+                <div class="box11_4_3"><a href="#" >订单查询</a></div>
+                <div class="box11_4_4"><a href="#" >特色商品说明</a></div>
+            </div>
+        <div class="box11_5">
+                <span>支付方式</span>
+                <div class="box11_5_1"><a href="#" >在线支付</a></div>
+                <div class="box11_5_2"><a href="#" >货到付款</a></div>
+                <div class="box11_5_3"><a href="#" >银行汇款</a></div>
+                <div class="box11_5_4"><a href="#" >海外汇款</a></div>
+            </div>
+        <div class="box11_6">
+                <span>配送方式</span>
+                <div class="box11_6_1"><a href="#" >体验中心自提</a></div>
+                <div class="box11_6_2"><a href="#" >全国免费配送</a></div>
+                <div class="box11_6_3"><a href="#" >海外派送</a></div>
+                <div class="box11_6_4"><a href="#" >货品包装</a></div>
+            </div>
+        <div class="box11_7">
+                <span>售后服务</span>
+                <div class="box11_7_1"><a href="#" >售后致策</a></div>
+                <div class="box11_7_2"><a href="#" >15天退换</a></div>
+                <div class="box11_7_3"><a href="#" >以小换大</a></div>
+                <div class="box11_7_4"><a href="#" >优惠换款</a></div>
+            </div>
+        <div class="box11_8"><img src="{% static 'first/img/web_code.jpg' %}" alt=""></div>
+        <div class="box11_9"></div>
+        <div class="box11_10">
+            <ul>
+                <li><a href="#"><img src="{% static 'first/img/fot_certi.gif' %}" alt=""></a></li>
+                <li><a href="#"><img src="{% static 'first/img/fot_certi_02.jpg' %}" alt=""></a></li>
+                <li><a href="#"><img src="{% static 'first/img/fot_certi_03.jpg' %}" alt=""></a></li>
+                <li><a href="#"><img src="{% static 'first/img/fot_certi_04.jpg' %}" alt=""></a></li>
+                <li><a href="#"><img src="{% static 'first/img/picp_bg.png' %}" alt="" width="115" height="37"></a></li>
+            </ul>
+        </div>
+    </div>
+{% endblock %}
+

@@ -1,0 +1,233 @@
+{% extends 'first/index.html' %}
+{% load static %}
+{% block title %}
+fill_form
+{% endblock %}
+{% block shop_car %}
+<link rel="stylesheet" href="{% static 'first/css/fill_form.css' %}">
+    <link rel="stylesheet" href="{% static 'first/js/jquery-3.3.1.min.js' %}">
+    <link rel="stylesheet" href="{% static 'first/js/fill_form.js' %}">
+    <div class="shop_car">
+        <img src="{% static 'first/img/shopcar_sanbu_2.png' %}" alt="">
+    </div>
+{% endblock %}
+{% block bodys %}
+    <link rel="stylesheet" href="{% static 'first/js/jquery-3.3.1.min.js' %}">
+    <link rel="stylesheet" href="{% static 'first/js/fill_form.js' %}">
+    <div class="shopcar_title" id="pay_money">
+    	<div class="shopcar_title_left">
+        	填写订单
+        </div>
+        <div class="shopcar_title_right">
+        	<!-- <a href="/info/browse/id/73/keycode/1001/#way" target='_blank' class="shopcar_title_right_img02"></a>
+        	<div class="shopcar_title_right_img01"></div> -->
+        </div>
+    </div>
+    <div class="shopcar_content_line"></div>
+    <div class="shopcar_order_left">配送方式</div>
+    <div class="shopcar_order_left_2">免费快递（顺丰速运）</div>
+    <div class="shopcar_order_left_btn shopcar_order_left_btn_click"></div>
+    <div class="shopcar_order_left_3" style="width:212px;">体验中心自提（全国11个体验中心）</div>
+    <div class="shopcar_order_left_btn" style="margin-left:560px;"></div>
+    <hr style="position: absolute;margin-top: 100px;width: 1185px;margin-left: 366px;opacity: 0.6;">
+    <div class="shopcar_order_left" style="position: absolute;margin-top: 110px">订货人信息<span style="font-size:12px; font-family:Arial,'宋体';color:#666; vertical-align: middle;display:inline-block;
+        padding-left:42px;">如有订单问题，客服将联系订货人，请务必完善信息哦！</span>
+        <!-- <img class="shopcar_title_left_img" src="http://img.zbird.cn/ww3/shopcar/shopcar_order_edit_img.jpg"> -->
+
+    </div>
+    <form action="{% url 'insert_order' res=res%}" method="post">
+    <div class="person_info">
+        <div class="shopcar_order_shouhuo_1_1" style="position: absolute;margin-top: 20px">
+                    <img class="shopcar_title_left_img" style="margin-top:12px; margin-left:12px;" src="http://img.zbird.cn/ww3/shopcar/shopcar_order_shouhuo_img.png">
+                    <span class="shopcar_order_shouhuo_span_1" style="font-size: 13px"><span style="letter-spacing: 12px;">订货</span>人</span>
+                    <input name="sender_name" id="dz_ren" value="" class="shopcar_order_input_1" type="text">
+                    <div id="shopcar_order_shouhuo_border" style="float:left;"></div>
+        </div>
+        <div class="clearHight" style="height:8px;"></div>
+    <div class="shopcar_order_shouhuo_1_1" style="position: absolute;margin-top: 55px">
+                <img class="shopcar_title_left_img" style="margin-top:12px; margin-left:12px;" src="http://img.zbird.cn/ww3/shopcar/shopcar_order_shouhuo_img.png">
+                <span class="shopcar_order_shouhuo_span_1" style="font-size: 13px">订货人手机</span>
+                <input type="text" name="sender_phone">
+                <div id="shopcar_order_shouhuo_border" style="float:left;"></div>
+            </div>
+    <div class="shopcar_order_shouhuo_1_1" style="z-index:1;position: absolute;margin-top: 100px">
+
+                <span class="shopcar_order_shouhuo_span_1" style="margin-left:25px;font-size: 13px">订货人地址</span>
+                <div class="adssel" style="float: left">
+                    <input type="text" name="sender_address1"><input type="text" name="sender_address2"><input type="text" name="sender_address3">
+                    <input type="hidden" name="mAddr_area_code" value="" id="areaCodeHiddenT">
+                </div>
+                <input name="mAddr_address" id="dz_ads" class="shopcar_order_input_3" value="" placeholder="" type="text" style="width:242px;">
+                <div id="shopcar_order_shouhuo_border" style="float:left;"></div>
+            </div>
+    <div class="shopcar_order_shouhuo_1_1"style="position: absolute;margin-top: 144px">
+                <span class="shopcar_order_shouhuo_span_1" style="margin-left:25px;font-size: 13px">订货人邮箱</span>
+                <input name="sender_post" id="dz_code" value="" class="shopcar_order_input_4" type="text">
+                <div id="shopcar_order_shouhuo_border" style="float:left;"></div>
+            </div>
+    <div class="shopcar_order_shouhuo_1_1" style="position: absolute;margin-top: 185px">
+                <span class="shopcar_order_shouhuo_span_1" style="margin-left:25px;font-size: 13px">订货人邮编</span>
+                <input name="sender_postcode" id="dz_code" value="" class="shopcar_order_input_4" type="text">
+                <div id="shopcar_order_shouhuo_border" style="float:left;"></div>
+            </div>
+    </div>
+    <div class="shopcar_order_left" style="margin-top:430px;position: absolute;">
+        收货人信息
+        <input class="shopcarCopyDinghuoren" type="checkbox" name="shopcarCopyDinghuoren" style=" margin-left:15px; margin-top:3px;vertical-align: middle;">
+        <div style="margin-left:5px; margin-top:2px; color:#0000;font-size: 12px;line-height: 15px;display:inline-block;">收货人信息同订货人信息，默认收货人为订货人</div>
+    </div>
+    <div class="person_info2">
+        <div class="shopcar_order_shouhuo_1_1" style="position: absolute;margin-top: 20px">
+                <img class="shopcar_title_left_img" style="margin-top:12px; margin-left:12px;" src="http://img.zbird.cn/ww3/shopcar/shopcar_order_shouhuo_img.png">
+                <span class="shopcar_order_shouhuo_span_1" style="font-size: 13px"><span style="letter-spacing: 12px;">收货</span>人</span>
+                <input name="receiver_name" id="dz_ren_sh" value="" class="shopcar_order_input_sh1" type="text">
+                <div id="shopcar_order_shouhuo_border" style="float:left;"></div>
+            </div>
+    <div class="shopcar_order_shouhuo_1_1" style="position: absolute;margin-top: 60px">
+                <img class="shopcar_title_left_img" style="margin-top:12px; margin-left:12px;" src="http://img.zbird.cn/ww3/shopcar/shopcar_order_shouhuo_img.png">
+                <span class="shopcar_order_shouhuo_span_1" style="font-size: 13px">收货人手机</span>
+                <input name="receiver_phone" id="dz_tel_sh" class="shopcar_order_input_sh2" type="text">
+                <div id="shopcar_order_shouhuo_border" style="float:left;"></div>
+            </div>
+        <div class="shopcar_order_shouhuo_1_1" style="z-index:1;position: absolute;margin-top: 100px">
+
+                <span class="shopcar_order_shouhuo_span_1" style="margin-left:25px;font-size: 13px">收货人地址</span>
+                <div class="adssel" style="float: left">
+                    <input type="text" name="receiver_address1"><input type="text" name="receiver_address2"><input type="text" name="receiver_address3">
+                    <input type="hidden" name="mAddr_area_code" value="" id="areaCodeHiddenT">
+                </div>
+                <input name="mAddr_address" id="dz_ads" class="shopcar_order_input_3" value="" placeholder="" type="text" style="width:242px;">
+                <div id="shopcar_order_shouhuo_border" style="float:left;"></div>
+            </div>
+    <div class="shopcar_order_shouhuo_1_1" style="position: absolute;margin-top: 145px">
+                <img class="shopcar_title_left_img" style="margin-top:12px; margin-left:12px;" src="http://img.zbird.cn/ww3/shopcar/shopcar_order_shouhuo_img.png">
+                <span class="shopcar_order_shouhuo_span_1" style="font-size: 13px">收货人邮编</span>
+                <input name="receiver_postcode" id="dz_code_sh" value="" class="shopcar_order_input_sh4" type="text">
+                <div id="shopcar_order_shouhuo_border" style="float:left;"></div>
+            </div>
+    </div>
+    <div class="sure"><a href="#" class="shopcar_order_shouhuo_queding">确定</a></div>
+    <div id="shop_car_1">
+{#    <link rel="stylesheet" href="{% static 'first/js/jquery-3.3.1.min.js' %}">#}
+    <link rel="stylesheet" href="{% static 'first/js/fill_form.js' %}">
+        <div class="shopcar_title">
+    	<div class="shopcar_title_left">
+                    </div>
+    </div>
+    <div class="f_car_lst_tlt">
+        <span class="f_car_lst_tlt_01">商品</span>
+        <span class="f_car_lst_tlt_02">主钻</span>
+        <span class="f_car_lst_tlt_03">辅钻</span>
+        <span class="f_car_lst_tlt_04">手寸</span>
+        <span class="f_car_lst_tlt_05">数量</span>
+        <span class="f_car_lst_tlt_06">价格</span>
+        <span class="f_car_lst_tlt_07"><a href="{% url 'my_shops2' %}" style="text-decoration: none;color:black">返回购物车</a></span>
+      </div>
+ <link rel="stylesheet" href="{% static 'first/js/fill_form.js' %}">
+
+        <div style="width: 60px;float: left;position: absolute;left: 350px;top: 100px;">
+
+                    <div>{% for img in imgs_list %}<a href="#"><img src="{{ img }}" alt="" width="60px" height="60px"></a>
+
+                    <div style="width: 60px;height: 40px"></div>
+                        {% endfor %}
+                    </div>
+                </div>
+
+      <div id="shop_have">
+
+            {% for all in all_info %}
+                <div id="shop_have_list">
+                <span class="shop_have_2"><a href="#">{{ all.good_name }}</a></span>
+                <span class="shop_have_3">{{ all.main_diamond }}</span>
+                <span class="shop_have_4">{{ all.assitant_diamond }}</span>
+                <span class="shop_have_5">{{ all.good_size }}</span>
+                <span class="shop_have_6">{{ all.good_number }}</span>
+                <span class="shop_have_7">{{ all.good_price }}</span>
+
+          </div>
+          <hr style="opacity: 0.5;">
+          {% endfor %}
+      </div>
+    <div style="width: 200px;position: absolute;margin-left: 1400px;" class="sum_price"><span style="font-size: 13px">订单总额</span><span style="font-size: 13px">￥{{ sum_price }}</span></div>
+{#    <div class="submits" style="position:absolute;width: 130px;height: 30px;background:rgb(255,138,129);margin-left: 1395px"><span><input type="submit" value="提交订单" style="width: 130px;height: 30px;cursor:pointer;background:rgb(255,138,129);"></span></div>#}
+
+    </div>
+    <input type="submit" value="提交订单" style="width: 130px;height: 30px;cursor:pointer;background:rgb(255,138,129);position: absolute;margin-left: 1410px" id="sub">
+    </form>
+
+
+{% endblock %}
+
+{% block foot %}
+
+    <link rel="stylesheet" href="{% static 'first/js/jquery-3.3.1.min.js' %}">
+    <link rel="stylesheet" href="{% static 'first/js/fill_form.js' %}">
+    <link rel="stylesheet" href="{% static 'first/css/fill_form.css' %}">
+    <script>
+        $(function () {
+            var l_top = document.getElementById('shop_have').offsetTop;
+            var l_top2 = document.getElementById('shop_have').clientHeight;
+            $('#box111111').css({
+                'margin-top':  l_top2 + l_top +1000
+            });
+            $('.sum_price').css({
+                'margin-top':  l_top2 + l_top
+            });
+            $('#sub').css({
+                'margin-top':  l_top2 + l_top +790
+            })
+        })
+    </script>
+    <div id="box111111">
+        <a href="#" class="box11_1"><img src="{% static 'first/img/footer_lnks.jpg' %}" alt=""></a>
+        <div class="box11_2"><img src="{% static 'first/img/logo85x90.jpg' %}" alt=""></div>
+        <div class="box11_3">
+                <span>关于我们</span>
+                <div class="box11_3_1"><a href="#" >品牌简介</a></div>
+                <div class="box11_3_2"><a href="#" >市场合作</a></div>
+                <div class="box11_3_3"><a href="#" >诚聘贤才</a></div>
+                <div class="box11_3_4"><a href="#" >联系我们</a></div>
+                <div class="box11_3_5"><a href="#" >商务加盟</a></div>
+            </div>
+        <div class="box11_4">
+                <span>购物指南</span>
+                <div class="box11_4_1"><a href="#" >购物流程</a></div>
+                <div class="box11_4_2"><a href="#" >订单处理时间</a></div>
+                <div class="box11_4_3"><a href="#" >订单查询</a></div>
+                <div class="box11_4_4"><a href="#" >特色商品说明</a></div>
+            </div>
+        <div class="box11_5">
+                <span>支付方式</span>
+                <div class="box11_5_1"><a href="#" >在线支付</a></div>
+                <div class="box11_5_2"><a href="#" >货到付款</a></div>
+                <div class="box11_5_3"><a href="#" >银行汇款</a></div>
+                <div class="box11_5_4"><a href="#" >海外汇款</a></div>
+            </div>
+        <div class="box11_6">
+                <span>配送方式</span>
+                <div class="box11_6_1"><a href="#" >体验中心自提</a></div>
+                <div class="box11_6_2"><a href="#" >全国免费配送</a></div>
+                <div class="box11_6_3"><a href="#" >海外派送</a></div>
+                <div class="box11_6_4"><a href="#" >货品包装</a></div>
+            </div>
+        <div class="box11_7">
+                <span>售后服务</span>
+                <div class="box11_7_1"><a href="#" >售后致策</a></div>
+                <div class="box11_7_2"><a href="#" >15天退换</a></div>
+                <div class="box11_7_3"><a href="#" >以小换大</a></div>
+                <div class="box11_7_4"><a href="#" >优惠换款</a></div>
+            </div>
+        <div class="box11_8"><img src="{% static 'first/img/web_code.jpg' %}" alt=""></div>
+        <div class="box11_9"></div>
+        <div class="box11_10">
+            <ul>
+                <li><a href="#"><img src="{% static 'first/img/fot_certi.gif' %}" alt=""></a></li>
+                <li><a href="#"><img src="{% static 'first/img/fot_certi_02.jpg' %}" alt=""></a></li>
+                <li><a href="#"><img src="{% static 'first/img/fot_certi_03.jpg' %}" alt=""></a></li>
+                <li><a href="#"><img src="{% static 'first/img/fot_certi_04.jpg' %}" alt=""></a></li>
+                <li><a href="#"><img src="{% static 'first/img/picp_bg.png' %}" alt="" width="115" height="37"></a></li>
+            </ul>
+        </div>
+    </div>
+{% endblock %}

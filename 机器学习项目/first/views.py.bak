@@ -1,0 +1,144 @@
+from django.shortcuts import render,HttpResponse,redirect
+from first.models import *
+from django import views
+from first.forms import *
+from first.AI_utils import *
+from django.conf import settings
+from first.face_baidu import *
+import os
+
+
+def index(request):
+    u_id = request.session.get("u_id")
+    if u_id:
+        try:
+            u=user.objects.get(id=u_id)
+            return render(request,'first/index.html',{"u":u,'u_id':u_id})
+        except:
+            return render(request,'first/index.html')
+    else:
+        return render(request,'first/index.html')
+
+
+def my_shops(request):
+
+    return render(request,'first/my_shops.html')
+
+def my_shops2(request):
+
+    a = [1,2,3,4,5]
+
+    return render(request,'first/my_shops2.html',{'a':a})
+
+def my_shops3(request):
+
+    return render(request,'first/my_shops3.html')
+
+def shop_detail(request):
+
+    return render(request,'first/shop_detail.html')
+
+class Register(views.View):
+    def get(self,request):
+        return render(request,'first/register.html')
+    def post(self,request):
+        f=RegisterForm(request.POST)
+        if f.is_valid():
+            username = f.cleaned_data.get("user_name")
+            password = f.cleaned_data.get("user_password")
+            phone=f.cleaned_data.get("user_phone")
+            yes = f.cleaned_data.get('yes')
+            no = f.cleaned_data.get("no")
+            user.objects.create(user_name=username,user_password=password,user_phone=phone)
+            u1=user.objects.get(user_name=username)
+            request.session['uid'] = u1.id
+            print(yes,no)
+            if yes:
+                return redirect('face_register')
+            if no:
+                return redirect('login')
+            else:
+                return redirect('register')
+        else:
+            print(f.get_simple())
+            return redirect('register')
+
+class Login(views.View):
+    def get(self,request):
+        return render(request,'first/login.html')
+    def post(self,request):
+        f = LoginForm(request.POST)
+        if f.is_valid():
+            name = f.cleaned_data.get("user_name")
+            pw = f.cleaned_data.get("user_password")
+            print(name,pw)
+            if user.objects.filter(user_name=name, user_password=pw).exists():
+                u2 =user.objects.get(user_name=name, user_password=pw)
+                request.session['u_id'] = u2.id
+            else:
+                u2 = user.objects.get(user_phone=name, user_password=pw)
+                print(u2)
+                request.session['u_id'] = u2.id
+            return redirect('index')
+        else:
+            print(f.errors.get_json_data())
+            return redirect('register')
+
+class IsFace(views.View):
+    def get(self,request):
+        return render(request, 'first/isface.html')
+    def post(self,request):
+        answer=request.POST.get("button")
+        if answer=="是":
+            return render(request,'first/face_register.html')
+        else:
+            return redirect('login')
+
+class Faceregister(views.View):
+
+    def get(self,request):
+        return render(request,'first/face_register.html')
+
+    def post(self,request):
+        uid = request.session.get('uid')
+        u3 = user.objects.get(id=uid)
+        img = request.POST.get('face_l')
+        face = Registerss(img=img)
+        # print(img)
+        face.face_register(group_id=1,user_id=u3.id)
+        return redirect('login')
+
+# 【人脸登录】
+class FaceLogin(views.View):
+    def get(self,request):
+        return render(request,'first/face_login.html')
+    def post(self,request):
+        img=request.POST.get("face_l")
+        face = Face(ak="GtTnXDw0r6KOMRRs6muEqoMi", sk="eBDgbwLsrWoSeucjr6GO2VyrO7X6oDo9", img=img)
+        r=face.face_search(group_id_list="1,2,3,4")
+
+        if r['error_code']==0:
+            if r['result']['user_list'][0]['score']<=80:
+
+                print("面部检测不成功，登录失败")
+                return redirect('login')
+            else:
+                user_id=r['result']['user_list'][0]['user_id']
+                u2=user.objects.get(id=user_id)
+                request.session['u_id'] = u2.id
+                return redirect('index')
+        else:
+            return redirect('index')
+
+def exit_login(request):
+    request.session.flush()
+    return redirect('index')
+
+def weding_detail(request):
+
+    return render(request,'first/weding_detail.html')
+
+
+def select_diamonds(request):
+
+    return render(request,'first/select_diamonds.html')

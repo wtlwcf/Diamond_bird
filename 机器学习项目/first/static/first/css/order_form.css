@@ -1,0 +1,131 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.floatL {
+	color:#666666;
+	float: left;
+	margin: auto;
+    position: absolute;
+    margin-top: 20px;
+    margin-left: 400px;
+}
+.floatL a{
+    text-decoration: none;
+    color: rgb(84, 55, 56);
+}
+.zi11111:hover{
+    color: rgb(255,138,129);
+}
+.a_sum a{
+    text-decoration: none;
+    color: black;
+    font-size: 12px;
+}
+.a_sum a:hover{
+    color: rgb(255,138,129);
+}
+.b_sum a{
+    text-decoration: none;
+    color: black;
+    font-size: 12px;
+}
+.b_sum a:hover{
+    color: rgb(255,138,129);
+}
+
+.a_1{
+    position: absolute;
+    margin-top: 35px;
+    margin-left: -50px;
+}
+.a_2{
+    position: absolute;
+    margin-top: 60px;
+    margin-left: -50px;
+}
+.a_3{
+    position: absolute;
+    margin-top: 85px;
+    margin-left: -50px;
+}
+.a_4{
+    position: absolute;
+    margin-top: 105px;
+    margin-left: -50px;
+}
+.a_5{
+    position: absolute;
+    margin-top: 130px;
+    margin-left: -50px;
+}
+.a_6{
+    position: absolute;
+    margin-top: 155px;
+    margin-left: -50px;
+}
+.b_1{
+    position: absolute;
+    margin-top: 20px;
+    margin-left: -50px;
+}
+.b_2{
+    position: absolute;
+    margin-top: 45px;
+    margin-left: -50px;
+}
+.b_3{
+    position: absolute;
+    margin-top: 70px;
+    margin-left: -50px;
+}
+
+.form_header{ display: table;background: #f5f7f6; line-height: 45px;font-size: 12px;width: 983px;height: auto;overflow: hidden;border: none;}
+.form_header em{color: #999;}
+.form_code,.form_info,.form_price,.form_pay,.form_time,.form_state,.form_ope{color: #4b4b4b;display: table-cell;vertical-align: middle;}
+.form_code{width: 145px;}
+.form_info{width: 282px;}
+.form_price{width: 100px;}
+.form_pay{width: 120px;}
+.form_time{width: 100px;}
+.form_state{width: 115px;}
+.form_ope{width:123px;}
+.form_ope .icon_detele{width: 84px;height: 32px;
+    margin: 0 auto;
+    background: #999999;
+    color: #fff;
+    font-family: "宋体";
+    font-size: 12px;
+    line-height: 32px;
+    text-align: center;}
+.form_ope .icon_detele:hover{opacity: 0.85;
+    filter: alpha(opacity=85);}
+.form_list{border-bottom: 1px solid #f6f6f6;background: #fff;position: relative; overflow: hidden;padding:25px 0;display: table;}
+.form_list .form_code,.form_list .form_price,.form_list .form_pay,.form_list .form_time,.form_list .form_state{text-align: center;display: table-cell;vertical-align: middle;}
+.form_list .form_info{ text-align: left; vertical-align:middle;text-align: center;}
+.form_list .form_info img{margin-left: 1px; margin-bottom: 1px; display: inline-block;}
+.form_list .form_ope{vertical-align:middle;color: #4b4b4b; width: 113px;}
+.form_list .form_info:after{clear:both;display:block;font-size: 0;visibility: hidden;height: 0;}
+.form_list .form_code{}
+.form_list .form_time{}
+.form_list .form_code{font-size: 12px;color: #333;font-family: Arial;}
+.form_list .form_time{font-size: 12px;color: #333;font-family: Arial;line-height: 18px;}
+.form_list .form_price,.form_list .form_pay{ffont-size: 12px;color: #333;font-family: Arial;}
+.form_list .form_state{font-size: 12px;color: #333;font-family:Arial, "宋体";}
+.form_list .form_ope a{ display: block;}
+.form_ope .btn_pay{     width: 84px;
+    height: 32px;
+    margin: 0 auto;
+    background: #ff8a81;
+    color: #fff;
+    font-family: "宋体";
+    font-size: 12px;
+    line-height: 32px;
+    text-align: center;}
+.form_ope .btn_pay:hover{opacity: 0.85;
+    filter: alpha(opacity=85);}
+.form_ope .btn_detail{ width: 84px;
+    height: 32px;margin: 0 auto; color: #333;line-height: 32px;}
+
+
+

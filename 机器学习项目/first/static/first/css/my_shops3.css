@@ -1,0 +1,46 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+#box1111{
+    width: 100%;
+    height: 548px;
+    background: rgb(253,242,236);
+    position: absolute;
+    margin-top: 550px;
+}
+
+.shop_no{
+    width: 1182px;
+    height: 430px;
+    position: absolute;
+    margin-top: 50px;
+    margin-left: 390px;
+    border-top: 1px solid black;
+    background: url("../img/shopcarbgpic.jpg");
+}
+
+.shop_no span{
+    font-size: 13px;
+    position: absolute;
+    margin-top: 200px;
+    margin-left: 750px;
+}
+
+.shop_no a{
+    width: 130px;
+    height: 30px;
+    font-size: 13px;
+    position: absolute;
+    margin-top: 250px;
+    margin-left: 840px;
+    background-color: rgb(254,184,174);
+    line-height: 30px;
+    text-decoration: none;
+    text-align: center;
+    color: white;
+}
+.shop_no a:hover{
+    opacity: 0.8;
+}

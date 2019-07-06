@@ -1,0 +1,133 @@
+{% extends 'first/index.html' %}
+{% load static %}
+{% block title %}
+face_register
+{% endblock %}
+
+
+{% block bodys %}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<div style="position: absolute;margin-left: 350px;width: 1200px;height: 600px;background-color:rgb(251,241,241);padding-right: -50px">
+    <canvas id="canvasCemara" width="400" height="400" class="video" style="position: absolute;margin-left: 420px;width: 400px;height: 300px;margin-top: 9%;"></canvas>
+    <video autoplay="" id="video2" style="width:400px;height:400px;background-color:darkgray;margin-left: 35%;margin-top: 5%;"></video>
+    <div class="wode" style="width: 120px;height: 35px;border: 1px brown solid;border-radius: 10%;cursor: pointer;position: absolute;margin-left:950px;text-align: center;line-height: 35px"><a id="btn" style="outline:none;font-size: 18px;width: 130px;height: 30px;cursor: pointer;color: #771616;" >拍摄</a></div>
+
+  <form action="{% url 'face_register' %}" method="post" id="img_form" enctype="multipart/form-data">
+      {% csrf_token %}
+      <input type="hidden" id="img_inp" name="face_l">
+{#      <input type="submit" id="btn02" style="font-size: 45px;position: absolute;margin-left: 600px;margin-top: 30px" value="提交"></input>#}
+      <input type="submit" id="btn02" style="font-size: 18px;position: absolute;margin-left: 950px;margin-top: 50px;border: 1px brown solid;color: brown;background:rgb(251,241,241);width: 120px;height: 35px;border-radius: 10%" value="提交">
+  </form>
+</div>
+
+
+<script>
+     $('.wode').click(function () {
+            $('#video2').hide(1);
+            $('.wode').hide(1);
+            $('#btn02').css({
+                'margin-left':'560px',
+                'margin-top':'500px'
+            });
+            {#alert('我的')#}
+        })
+    var video = document.getElementById('video2');
+    var constraints = {audio: false, video: true};
+     function successCallback(stream) {
+         video.srcObject = stream;
+         video.play();
+ }
+    function errorCallback(error) {
+        console.log("navigator.getUserMedia error: ", error);
+        $(".CameraTips").show();
+ }
+
+    navigator.mediaDevices.getUserMedia(constraints)
+        .then(successCallback)
+        .catch(errorCallback);
+
+    document.getElementById("btn").addEventListener("click", function () {
+        var video = document.getElementById('video2');
+        canvas = document.getElementById('canvasCemara');
+        ctx = canvas.getContext('2d');
+        var _w = 624, _h = 468;
+        if (video.videoWidth > 0) _h = video.videoHeight / (video.videoWidth / _w);
+        canvas.setAttribute('width', _w);
+        canvas.setAttribute('height', _h);
+        ctx.fillRect(0, 0, _w, _h);
+        ctx.drawImage(video, 0, 0, _w, _h);
+});
+    document.getElementById("btn02").addEventListener("click", function () {
+        var img_data=document.getElementById("canvasCemara");
+        var img_base=img_data.toDataURL("image/jpeg");
+        document.getElementById("img_inp").value=img_base;
+})
+</script>
+</body>
+</html>
+
+
+{% endblock %}
+    {% block foot %}
+        {% load static %}
+    <div id="box11" style="position: absolute;bottom: -340px;">
+        <a href="#" class="box11_1"><img src="{% static 'first/img/footer_lnks.jpg' %}" alt=""></a>
+        <div class="box11_2"><img src="{% static 'first/img/logo85x90.jpg' %}" alt=""></div>
+        <div class="box11_3">
+                <span>关于我们</span>
+                <div class="box11_3_1"><a href="#" >品牌简介</a></div>
+                <div class="box11_3_2"><a href="#" >市场合作</a></div>
+                <div class="box11_3_3"><a href="#" >诚聘贤才</a></div>
+                <div class="box11_3_4"><a href="#" >联系我们</a></div>
+                <div class="box11_3_5"><a href="#" >商务加盟</a></div>
+            </div>
+        <div class="box11_4">
+                <span>购物指南</span>
+                <div class="box11_4_1"><a href="#" >购物流程</a></div>
+                <div class="box11_4_2"><a href="#" >订单处理时间</a></div>
+                <div class="box11_4_3"><a href="#" >订单查询</a></div>
+                <div class="box11_4_4"><a href="#" >特色商品说明</a></div>
+            </div>
+        <div class="box11_5">
+                <span>支付方式</span>
+                <div class="box11_5_1"><a href="#" >在线支付</a></div>
+                <div class="box11_5_2"><a href="#" >货到付款</a></div>
+                <div class="box11_5_3"><a href="#" >银行汇款</a></div>
+                <div class="box11_5_4"><a href="#" >海外汇款</a></div>
+            </div>
+        <div class="box11_6">
+                <span>配送方式</span>
+                <div class="box11_6_1"><a href="#" >体验中心自提</a></div>
+                <div class="box11_6_2"><a href="#" >全国免费配送</a></div>
+                <div class="box11_6_3"><a href="#" >海外派送</a></div>
+                <div class="box11_6_4"><a href="#" >货品包装</a></div>
+            </div>
+        <div class="box11_7">
+                <span>售后服务</span>
+                <div class="box11_7_1"><a href="#" >售后致策</a></div>
+                <div class="box11_7_2"><a href="#" >15天退换</a></div>
+                <div class="box11_7_3"><a href="#" >以小换大</a></div>
+                <div class="box11_7_4"><a href="#" >优惠换款</a></div>
+            </div>
+        <div class="box11_8"><img src="{% static 'first/img/web_code.jpg' %}" alt=""></div>
+        <div class="box11_9"></div>
+        <div class="box11_10">
+            <ul>
+                <li><a href="#"><img src="{% static 'first/img/fot_certi.gif' %}" alt=""></a></li>
+                <li><a href="#"><img src="{% static 'first/img/fot_certi_02.jpg' %}" alt=""></a></li>
+                <li><a href="#"><img src="{% static 'first/img/fot_certi_03.jpg' %}" alt=""></a></li>
+                <li><a href="#"><img src="{% static 'first/img/fot_certi_04.jpg' %}" alt=""></a></li>
+                <li><a href="#"><img src="{% static 'first/img/picp_bg.png' %}" alt="" width="115" height="37"></a></li>
+            </ul>
+        </div>
+    </div>
+    {% endblock %}

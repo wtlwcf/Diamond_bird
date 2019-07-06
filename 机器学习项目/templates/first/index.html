@@ -1,0 +1,508 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}
+        index
+    {% endblock %}</title>
+        <link rel="stylesheet" href="{% static 'first/css/first.css' %}">
+        <script src="{% static 'first/js/jquery-3.3.1.min.js' %}"></script>
+        <script src="{% static 'first/js/first.js' %}"></script>
+</head>
+<body>
+    {#  开始标签 #}
+    <div id="box01">
+        <div class="box01_1">
+            <span class="weclome">欢迎进入钻石小鸟官网</span>
+            {% if u_id %}
+                <span class="login"><a href="{% url 'login' %}">{{ u.user_name }}</a></span>
+                <span class="register"><a href="{% url 'exit' %}">注销</a></span>
+            {% else %}
+                <span class="login"><a href="{% url 'login' %}">登录</a></span>
+                <span class="register"><a href="{% url 'register' %}">注册</a></span>
+            {% endif %}
+        </div>
+        <div class="box01_2">
+
+                <div class="box01_2_1" >
+                {% block shoppings %}
+                    <ul>
+                        <li class="box01_2_1_img1"><img src="{% static 'first/img/header_box.png' %}" alt=""></li>
+                        {% if number == 0 %}
+                            <li><a href="{% url 'my_shops3' %}">购物车</a></li>
+                            <li><span>{{ number }}</span></li>
+                        {% else %}
+                            <li><a href="{% url 'my_shops2' %}">购物车</a></li>
+                            <li><span>{{ number }}</span></li>
+                        {% endif %}
+                        <li class="box01_2_1_img2"><img src="{% static 'first/img/icon_drop.png' %}" alt=""></li>
+
+                    </ul>
+                {% endblock %}
+            </div>
+
+            <div class="box01_2_2" style="width: 300px;height: 20px;">
+                <span><a href="{% url 'orders' %}" style="color:black;line-height: 28px" class="dingdan">我的订单</a></span>
+                <span style="position: absolute;left: 40px;">我的鸟巢</span>
+                <span style="position: absolute;left: 100px;">钻石课堂</span>
+                <span style="position: absolute;left: 160px;">手机官网</span>
+            </div>
+        </div>
+    </div>
+    {#  搜索栏  #}
+    <div id="box02">
+        <div class="box02_img1">
+            <div class="box02_img1_1">
+                <img src="{% static 'first/img/e7d95bd4f523b9d296421613e6267360.png' %}">
+            </div>
+            <div class="box02_img1_2">
+                <span>钻   石   小   鸟</span>&emsp;
+                <span>智   慧   之   选</span>
+            </div>
+        </div>
+        {% block shop_car %}
+            <div class="box02_img2">
+            <form action="{% url 'skip_page' everypage=1%}" method="post">
+    <input type="text" placeholder="戒托" class="box02_img2_1" name="find" style="width: 200px;height: 30px;">
+    <a href="#"><img src="{% static 'first/img/icon_ser.jpg' %}" alt="" class="box02_img2_2"></a>
+    <input type="submit" class="box02_img2_3" value="搜索">
+</form>
+        </div>
+        {% endblock %}
+    </div>
+    {#  导航栏  #}
+    {% block bodys %}
+    {% block nav %}
+    <div id="box03">
+        <ul class="box03_1">
+            <li class="box03_1_1"><a href="#">首页</a></li>
+            <li class="box03_1_2"><a href="#">钻石</a></li>
+            <li class="box03_1_2_c">
+                <span class="box03_1_2_c_1">钻石</span>
+                <span class="box03_1_2_c_2"><a href="#" >搜索全部钻石</a></span>
+                <span class="box03_1_2_c_3"><a href="#" >30分裸钻</a></span>
+                <span class="box03_1_2_c_4"><a href="#" >50分裸钻</a></span>
+                <span class="box03_1_2_c_5"><a href="#" >70分裸钻</a></span>
+                <span class="box03_1_2_c_6"><a href="#" >克拉钻</a></span>
+                <span class="box03_1_2_c_7"><a href="#" >海淘钻石立省</a></span>
+                <span class="box03_1_2_c_8"><a href="#" >北极光钻石</a></span>
+                <span class="box03_1_2_c_9"><a href="#" > Cushion钻石</a></span>
+                <hr style="transform: rotate(90deg);width: 300px;position: absolute;margin-top: 156px;opacity: 0.3;left: 700px;">
+                <span class="box03_1_2_c_10"><a href="#" >圆形</a></span>
+                <span class="box03_1_2_c_11"><a href="#" >公主方</a></span>
+                <span class="box03_1_2_c_12"><a href="#" >祖母绿</a></span>
+                <span class="box03_1_2_c_13"><a href="#" >橄榄形</a></span>
+                <span class="box03_1_2_c_14"><a href="#" >椭圆形</a></span>
+                <span class="box03_1_2_c_15"><a href="#" >梨形</a></span>
+                <span class="box03_1_2_c_16"><a href="#" >心形</a></span>
+                <span class="box03_1_2_c_17"><a href="#" >定制一款钻戒</a></span>
+                <span class="box03_1_2_c_18"><a href="#" >定制一款吊坠</a></span>
+                <span class="box03_1_2_c_19"><a href="#" >钻石4C知识</a></span>
+                <span class="box03_1_2_c_20"><a href="#" >钻石其他参数</a></span>
+                <span class="box03_1_2_c_21"><a href="#" >钻石证书知识</a></span>
+                <span class="box03_1_2_c_22"><a href="#" >甄选特惠裸钻</a></span>
+                <span class="box03_1_2_c_23"><a href="#" >钻戒品牌排行</a></span>
+                <img src="{% static 'first/img/a27a48cb2db8014f56ab49a989779c14.jpg' %}" alt="" class="box03_1_2_c_img">
+            </li>
+            <li class="box03_1_3"><a href="{% url 'weding_detail' %}">婚戒</a></li>
+            <li class="box03_1_3_c">
+                <span class="box03_1_3_c_1">婚戒</span>
+                <span class="box03_1_3_c_2"><a href="#">搜索全部婚戒</a></span>
+                <span class="box03_1_3_c_3"><a href="#" >简约独钻</a></span>
+                <span class="box03_1_3_c_4"><a href="#" >奢华群镶</a></span>
+                <span class="box03_1_3_c_5"><a href="#" >克拉钻戒</a></span>
+                <span class="box03_1_3_c_6"><a href="#" >大气男戒</a></span>
+                <span class="box03_1_3_c_7"><a href="#" >纪念戒/花戒</a></span>
+                <span class="box03_1_3_c_8"><a href="#" >戒托款式</a></span>
+                <span class="box03_1_3_c_9"><a href="#" >人气热销</a></span>
+                <hr style="transform: rotate(90deg);width: 300px;position: absolute;margin-top: 156px;opacity: 0.3;left: 700px;">
+                <span class="box03_1_3_c_10"><a href="#" >北极光追光系列</a></span>
+                <span class="box03_1_3_c_11"><a href="#" >心心相印系列</a></span>
+                <span class="box03_1_3_c_12"><a href="#" >LADY NEW</a></span>
+                <span class="box03_1_3_c_13"><a href="#" >公主桂冠系列</a></span>
+                <span class="box03_1_3_c_14"><a href="#" >钟情蕾丝系列</a></span>
+                <span class="box03_1_3_c_15"><a href="#" >宠爱系列</a></span>
+                <span class="box03_1_3_c_16"><a href="#" >设计师甄选</a></span>
+                <span class="box03_1_3_c_17"><a href="#" >如何测量手寸</a></span>
+                <span class="box03_1_3_c_18"><a href="#" >合适的戒指款式</a></span>
+                <span class="box03_1_3_c_19"><a href="#" >挑选戒托材质</a></span>
+                <span class="box03_1_3_c_20"><a href="#" >匠心工艺</a></span>
+                <span class="box03_1_3_c_21"><a href="#" >送男人什么礼物</a></span>
+                <span class="box03_1_3_c_22"><a href="#" >一克拉钻戒的钱</a></span>
+                <span class="box03_1_3_c_23"><a href="#" >项链品牌</a></span>
+                <img src="{% static 'first/img/52570_1.jpg' %}" alt="" class="box03_1_3_c_img">
+            </li>
+            <li class="box03_1_4"><a href="#">对戒</a></li>
+            <li class="box03_1_4_c">
+                <span class="box03_1_4_c_1">对戒</span>
+                <span class="box03_1_4_c_2"><a href="#" >搜索全部对戒</a></span>
+                <span class="box03_1_4_c_3"><a href="#" >18K金对戒</a></span>
+                <span class="box03_1_4_c_4"><a href="#" >铂金对戒</a></span>
+                <span class="box03_1_4_c_5"><a href="#" >男款对戒</a></span>
+                <span class="box03_1_4_c_6"><a href="#" >女款对戒</a></span>
+                <span class="box03_1_4_c_7"><a href="#" >热销款式</a></span>
+                <hr style="transform: rotate(90deg);width: 300px;position: absolute;margin-top: 156px;opacity: 0.3;left: 700px;">
+                <span class="box03_1_4_c_8"><a href="#" >INTO COLOUR</a></span>
+                <span class="box03_1_4_c_9"><a href="#" >两人一世戒系列</a></span>
+                <span class="box03_1_4_c_10"><a href="#" >YOU&ME系列</a></span>
+                <span class="box03_1_4_c_11"><a href="#" >FancyCollection</a></span>
+                <span class="box03_1_4_c_12"><a href="#" >订婚男方的准备</a></span>
+                <span class="box03_1_4_c_13"><a href="#" >户外婚礼</a></span>
+                <span class="box03_1_4_c_14"><a href="#" >1克拉钻戒</a></span>
+                <span class="box03_1_4_c_15"><a href="#" >gia证书</a></span>
+                <span class="box03_1_4_c_16"><a href="#" >手势品牌</a></span>
+                <span class="box03_1_4_c_17"><a href="#" >送礼物排行版</a></span>
+                <span class="box03_1_4_c_18"><a href="#" >1克拉钻戒多少钱</a></span>
+                <img src="{% static 'first/img/54806_1.jpg' %}" alt="" class="box03_1_2_c_img">
+            </li>
+            <li class="box03_1_5"><a href="#">配饰</a></li>
+            <li class="box03_1_5_c">
+                <span class="box03_1_5_c_1">配饰</span>
+                <span class="box03_1_5_c_2"><a href="#">搜索全部配饰</a></span>
+                <span class="box03_1_5_c_3"><a href="#" >挂坠</a></span>
+                <span class="box03_1_5_c_4"><a href="#" >项链坠</a></span>
+                <span class="box03_1_5_c_5"><a href="#" >耳钉</a></span>
+                <span class="box03_1_5_c_6"><a href="#" >手链</a></span>
+                <span class="box03_1_5_c_7"><a href="#" >手镯</a></span>
+                <span class="box03_1_5_c_8"><a href="#" >项链</a></span>
+                <span class="box03_1_5_c_9"><a href="#" >人气TOP</a></span>
+                <hr style="transform: rotate(90deg);width: 300px;position: absolute;margin-top: 156px;opacity: 0.3;left: 700px;">
+                <span class="box03_1_5_c_10"><a href="#" >生而不同的星座</a></span>
+                <span class="box03_1_5_c_11"><a href="#" >珍珠系列</a></span>
+                <span class="box03_1_5_c_12"><a href="#" >BLINK系列</a></span>
+                <span class="box03_1_5_c_13"><a href="#" >微光系列</a></span>
+                <span class="box03_1_5_c_14"><a href="#" >INTO COLOUR悦色系列-秘密花园</a></span>
+{#                <span class="box03_1_3_c_15"><a href="#" >宠爱系列</a></span>#}
+{#                <span class="box03_1_5_c_16"><a href="#" ></a></span>#}
+                <span class="box03_1_5_c_17"><a href="#" >闺蜜结婚送什么</a></span>
+                <span class="box03_1_5_c_18"><a href="#" >戒指品牌</a></span>
+                <span class="box03_1_5_c_19"><a href="#" >一克拉钻戒多钱</a></span>
+                <span class="box03_1_5_c_20"><a href="#" >老婆生日送什么</a></span>
+                <span class="box03_1_5_c_21"><a href="#" >送成熟男士礼物</a></span>
+                <span class="box03_1_5_c_22"><a href="#" >生日礼物送什么</a></span>
+                <span class="box03_1_5_c_23"><a href="#" >结婚戒指戴哪个手指</a></span>
+                <img src="{% static 'first/img/52570_1.jpg' %}" alt="" class="box03_1_3_c_img">
+            </li>
+            <li class="box03_1_6"><a href="#">定制</a></li>
+            <li class="box03_1_6_c">
+                <span class="box03_1_6_c_1">定制</span>
+                <span class="box03_1_6_c_2"><a href="#" >搜索全部定制</a></span>
+                <span class="box03_1_6_c_3"><a href="#" >从裸钻开始定制</a></span>
+                <span class="box03_1_6_c_4"><a href="#" >从戒指开始定制</a></span>
+                <span class="box03_1_6_c_5"><a href="#" >从吊坠开始定制</a></span>
+                <span class="box03_1_6_c_6"><a href="#" >私人定制服务</a></span>
+{#                <span class="box03_1_4_c_7"><a href="#" >热销款式</a></span>#}
+                <hr style="transform: rotate(90deg);width: 300px;position: absolute;margin-top: 156px;opacity: 0.3;left: 700px;">
+                <span class="box03_1_6_c_8"><a href="#" >经典直臂款戒托</a></span>
+                <span class="box03_1_6_c_9"><a href="#" >简约扭臂款戒托</a></span>
+                <span class="box03_1_6_c_10"><a href="#" >异性钻款戒托</a></span>
+                <span class="box03_1_6_c_11"><a href="#" >北极光款戒托</a></span>
+                <span class="box03_1_6_c_12"><a href="#" >火玫瑰款戒托</a></span>
+                <span class="box03_1_6_c_13"><a href="#" >钻石4C</a></span>
+                <span class="box03_1_6_c_14"><a href="#" >戒托款式</a></span>
+                <span class="box03_1_6_c_15"><a href="#" >戒托材质</a></span>
+                <span class="box03_1_6_c_16"><a href="#" >手寸测量</a></span>
+                <span class="box03_1_6_c_17"><a href="#" >送闺蜜什么礼物</a></span>
+                <span class="box03_1_6_c_18"><a href="#" >给老人买什么</a></span>
+                <img src="{% static 'first/img/54808_1.jpg' %}" alt="" class="box03_1_2_c_img">
+            </li>
+            <li class="box03_1_7"><a href="#">体验中心</a></li>
+            <li class="box03_1_7_c">
+                <span class="box03_1_7_c_1">体验中心</span>
+                <span class="box03_1_7_c_2"><a href="#" >搜索全部中心</a></span>
+                <span class="box03_1_7_c_3"><a href="#" >上海体验中心</a></span>
+                <span class="box03_1_7_c_4"><a href="#" >北京体验中心</a></span>
+                <span class="box03_1_7_c_5"><a href="#" >广州体验中心</a></span>
+                <span class="box03_1_7_c_6"><a href="#" >成都体验中心</a></span>
+                <span class="box03_1_7_c_7"><a href="#" >宿迁体验中心</a></span>
+                <span class="box03_1_7_c_8"><a href="#" >苏州体验中心</a></span>
+                <span class="box03_1_7_c_9"><a href="#" >杭州体验中心</a></span>
+                <hr style="transform: rotate(90deg);width: 300px;position: absolute;margin-top: 156px;opacity: 0.3;left: 700px;">
+                <span class="box03_1_7_c_10"><a href="#" >南京体验中心</a></span>
+                <span class="box03_1_7_c_11"><a href="#" >合肥体验中心</a></span>
+                <span class="box03_1_7_c_12"><a href="#" >天津体验中心</a></span>
+                <span class="box03_1_7_c_13"><a href="#" >宁波体验中心</a></span>
+                <span class="box03_1_7_c_14"><a href="#" >盐城体验中心</a></span>
+                <span class="box03_1_7_c_15"><a href="#" >常州体验中心</a></span>
+                <span class="box03_1_7_c_16"><a href="#" >烟台体验中心</a></span>
+                <span class="box03_1_7_c_17"><a href="#" >武汉体验中心</a></span>
+                <span class="box03_1_7_c_18"><a href="#" >西安体验中心</a></span>
+                <span class="box03_1_7_c_19"><a href="#" >郑州体验中心</a></span>
+                <span class="box03_1_7_c_20"><a href="#" >济宁体验中心</a></span>
+                <span class="box03_1_7_c_21"><a href="#" >丽水体验中心</a></span>
+                <span class="box03_1_7_c_22"><a href="#" >盐城金鹰中心</a></span>
+                <span class="box03_1_7_c_23"><a href="#" >重庆体验中心</a></span>
+                <span class="box03_1_7_c_24"><a href="#" >查看全部</a></span>
+                <img src="{% static 'first/img/a27a48cb2db8014f56ab49a989779c14.jpg' %}" alt="" class="box03_1_2_c_img">
+            </li>
+        </ul>
+        <ul class="box03_2">
+            <li class="box03_2_1"><a href="#">商务加盟</a></li>
+            <li class="box03_2_2"><a href="#">品牌故事</a></li>
+            <li class="box03_2_3"><a href="#">鸟巢论坛</a></li>
+        </ul>
+    </div>
+    {% endblock %}
+    {#  轮播图  #}
+    <div id="box04">
+        <div class="box04_1">
+            <ul class="picture">
+                <li><a href="#"><img src="{% static 'first/img/a577afa89f76e7644681e94f0f03e755.jpg' %}"></a></li>
+                <li><a href="#"><img src="{% static 'first/img/ceab98008a47dfa17c17f9da76373591.jpg' %}" alt=""></a></li>
+                <li><a href="#"><img src="{% static 'first/img/94b29da8e66300bda8060c2cc14c78b5.jpg' %}" alt=""></a></li>
+                <li><a href="#"><img src="{% static 'first/img/03566227fef7097cf2092fb01f628506.jpg' %}" alt=""></a></li>
+                <li><a href="#"><img src="{% static 'first/img/effb1299f5a416e3080a3a198c96010e.jpg' %}" alt=""></a></li>
+            </ul>
+            <div class="left">
+                <img src="{% static 'first/img/prev_54.png' %}" alt="">
+            </div>
+            <div class="right">
+                <img src="{% static 'first/img/next_54.png' %}" alt="">
+            </div>
+            <ul class="tu_li">
+{#                <li></li>#}
+{#                <li></li>#}
+{#                <li></li>#}
+{#                <li></li>#}
+{#                <li></li>#}
+            </ul>
+        </div>
+    </div>
+    {#  开始挑选 #}
+    <div id="box05">
+        <div class="box05_1">
+            <span class="box05_1_1">设计订婚戒指</span>
+            <ul class="box05_1_2">
+                <li><img src="{% static 'first/img/diy_1.jpg' %}" alt=""></li>
+                <li><img src="{% static 'first/img/diy_2.jpg' %}" alt=""></li>
+                <li><img src="{% static 'first/img/diy_3.jpg' %}" alt=""></li>
+            </ul>
+            <div class="box05_1_3"><span><a href="#">从挑选钻石开始</a></span></div>
+            <div class="box05_1_4"><span><a href="#">从挑选款式开始</a></span></div>
+        </div>
+        <div class="box05_2">
+            <img src="{% static 'first/img/244931d3d37b44b9caec7b954f807d12.jpg' %}" alt="">
+        </div>
+    </div>
+    {#  系列产品 #}
+    <div id="box06">
+        <div class="box06_1">
+            <span>系列产品</span>
+        </div>
+        <div class="box06_2">
+            <div class="box06_2_1">
+                <div class="box06_2_1_1">
+                    <span>推荐</span>
+                </div>
+                <div class="box06_2_1_2">
+                    <span>钻石</span>
+                </div>
+                <div class="box06_2_1_3">
+                    <span>婚戒</span>
+                </div>
+                <div class="box06_2_1_4">
+                    <span>对戒</span>
+                </div>
+                <div class="box06_2_1_5">
+                    <span>配饰</span>
+                </div>
+            </div>
+            <div id="lunbo2">
+                <div class="box06_2_2_1">
+                <ul>
+                    <li class="box06_2_2_1_1"><img src="{% static 'first/img/a314737c13dd43991c8a312f04a12af8.jpg' %}" alt=""></li>
+                    <li class="box06_2_2_1_2"><img src="{% static 'first/img/082ff1d7878dd42e0cabdb12d61646b7.jpg' %}" alt=""></li>
+                    <li class="box06_2_2_1_3"><img src="{% static 'first/img/1f40bce935bc9884572e35af4d501518.jpg' %}" alt=""></li>
+                </ul>
+            </div>
+            <div class="box06_2_2_2">
+                <ul>
+                    <li class="box06_2_2_2_1"><img src="{% static 'first/img/a27a48cb2db8014f56ab49a989779c14.jpg' %}" alt=""></li>
+                    <li class="box06_2_2_2_2"><img src="{% static 'first/img/47f2d81f9f1cdfc43f5c53245ddda1fa.jpg' %}" alt=""></li>
+                    <li class="box06_2_2_2_3"><img src="{% static 'first/img/ca4b94bdf415e4052f093b4cc3c9ac31.jpg' %}" alt=""></li>
+                </ul>
+            </div>
+            <div class="box06_2_2_3">
+                <ul>
+                    <li class="box06_2_2_3_1"><img src="{% static 'first/img/04fe6f016c159c9e53978c7df692383d.jpg' %}" alt=""></li>
+                    <li class="box06_2_2_3_2"><img src="{% static 'first/img/3de52665bd65b6825c204edb61db943b.jpg' %}" alt=""></li>
+                    <li class="box06_2_2_3_3"><img src="{% static 'first/img/700029e6fbdad00e4dd64822c572a0b4.jpg' %}" alt=""></li>
+                </ul>
+            </div>
+            <div class="box06_2_2_4">
+                <ul>
+                    <li class="box06_2_2_4_1"><img src="{% static 'first/img/a314737c13dd43991c8a312f04a12af8.jpg' %}" alt=""></li>
+                    <li class="box06_2_2_4_2"><img src="{% static 'first/img/dc38df7a8b40b8ef6a1480bebcbb2ec6.jpg' %}" alt=""></li>
+                    <li class="box06_2_2_4_3"><img src="{% static 'first/img/516de52c6405d2b765f7f7f96dc9d91e.jpg' %}" alt=""></li>
+                </ul>
+            </div>
+            <div class="box06_2_2_5">
+                <ul>
+                    <li class="box06_2_2_5_1"><img src="{% static 'first/img/06aa074c777e9f69b2f1203d6faf81af.jpg' %}" alt=""></li>
+                    <li class="box06_2_2_5_2"><img src="{% static 'first/img/a309d6bbd88812fab2d62246341d6d45.jpg' %}" alt=""></li>
+                    <li class="box06_2_2_5_3"><img src="{% static 'first/img/2472ae1295a8dd5c151b081a79724d90.jpg' %}" alt=""></li>
+                </ul>
+            </div>
+            </div>
+        </div>
+
+    </div>
+    {#  婚介推荐 #}
+    <div id="box07">
+        <div class="box07_1"><span>
+            婚戒推荐
+            <img src="{% static 'first/img/icon_and.jpg' %}" alt="">
+            全球美钻
+        </span></div>
+        <div class="box07_2">
+            <div>
+                <div class="left1" id="btn01"></div>
+                <div class="right1" id="btn02"></div>
+            </div>
+            <div class="box07_2_1">
+                <ul class="box07_2_1_ul">
+                    <li><img src="{% static 'first/img/7f130bb6f769b7f79f4f6db1cb62e3f0.jpg' %}" alt=""></li>
+                    <li><img src="{% static 'first/img/85b8cf7d63d466da732336d3a4298575.jpg' %}" alt=""></li>
+                    <li><img src="{% static 'first/img/95c30f0175335b0dbff907187e461e60.jpg' %}" alt=""></li>
+                    <li><img src="{% static 'first/img/0249a7c120b6c632a5533e2441dbbf22.jpg' %}" alt=""></li>
+{#                    <li><img src="{% static 'first/img/bca21b60ff198c8cd89cc242428c3f90.jpg' %}" alt=""></li>#}
+{#                    <li><img src="{% static 'first/img/37b1d35e2b66d8f52a75ce5ebdce2e87.jpg' %}" alt=""></li>#}
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div id="box08">
+        <div class="box08_1">
+            <ul class="box08_1_1">
+                <li class="box08_1_1_1"></li>
+                <li class="box08_1_1_2"><span>ROUND</span></li>
+            </ul>
+            <ul class="box08_1_2">
+                <li class="box08_1_2_1"></li>
+                <li class="box08_1_2_2"><span>PRINCESS</span></li>
+            </ul>
+            <ul class="box08_1_3">
+                <li class="box08_1_3_1"></li>
+                <li class="box08_1_3_2"><span>CUSHION</span></li>
+            </ul>
+            <ul class="box08_1_4">
+                <li class="box08_1_4_1"></li>
+                <li class="box08_1_4_2"><span>EMERALD</span></li>
+            </ul>
+            <ul class="box08_1_5">
+                <li class="box08_1_5_1"></li>
+                <li class="box08_1_5_2"><span>OVAL</span></li>
+            </ul>
+            <ul class="box08_1_6">
+                <li class="box08_1_6_1"></li>
+                <li class="box08_1_6_2"><span>PADINANT</span></li>
+            </ul>
+            <ul class="box08_1_7">
+                <li class="box08_1_7_1"></li>
+                <li class="box08_1_7_2"><span>MARQUISE</span></li>
+            </ul>
+            <ul class="box08_1_8">
+                <li class="box08_1_8_1"></li>
+                <li class="box08_1_8_2"><span>PEAR</span></li>
+            </ul>
+            <ul class="box08_1_9">
+                <li class="box08_1_9_1"></li>
+                <li class="box08_1_9_2"><span>HEART</span></li>
+            </ul>
+            <ul class="box08_1_10">
+                <li class="box08_1_10_1"></li>
+                <li class="box08_1_10_2"><span><a href="#" title="三角形">TRILLION</a></span></li>
+            </ul>
+        </div>
+    </div>
+    <div id="box09">
+        <div class="box09_1"><img src="{% static 'first/img/0f7ab89759a0acadc7aa75e9d96f74c3.jpg' %}" alt=""></div>
+        <div class="box09_2"><img src="{% static 'first/img/c2ec26ed9335644ab592a2745b14142c.gif' %}" alt=""></div>
+        <div class="box09_3"><img src="{% static 'first/img/0973eae3daff555b44ec3ced8cb6fa90.jpg' %}" alt=""></div>
+    </div>
+    {% block foot_last %}
+    <div id="box10">
+        <div class="box10_1">
+            <div class="box10_1_1">
+                <span>咨询动态</span>
+                <div class="box10_1_1_1"><a href="#" >十二星座的戒指</a></div>
+                <div class="box10_1_1_2"><a href="#" >戒指的戴法和意义</a></div>
+                <div class="box10_1_1_3"><a href="#" >耳环品牌</a></div>
+                <div class="box10_1_1_4"><a href="#" >手链品牌</a></div>
+                <div class="box10_1_1_5"><a href="#" >带男朋友回家买什么礼物</a></div>
+                <div class="box10_1_1_6"><a href="#" >耳环批发价格</a></div>
+                <div class="box10_1_1_7"><a href="#" >查看全部</a></div>
+            </div>
+            <div class="box10_1_2">
+                <span>钻石课堂</span>
+                <div class="box10_1_2_1"><a href="#" >一克拉钻戒多少钱</a></div>
+                <div class="box10_1_2_2"><a href="#" >女生渴望收到的礼物</a></div>
+                <div class="box10_1_2_3"><a href="#" >订婚戒指戴哪个手指</a></div>
+                <div class="box10_1_2_4"><a href="#" >一克拉有多大</a></div>
+                <div class="box10_1_2_5"><a href="#" >一克拉钻戒的价格</a></div>
+                <div class="box10_1_2_6"><a href="#" >送给未来婆婆十佳礼物</a></div>
+                <div class="box10_1_2_7"><a href="#" >查看全部</a></div>
+            </div>
+        </div>
+        <div class="box10_2">
+            <img src="{% static 'first/img/ad_01.jpg' %}" alt="">
+        </div>
+    </div>
+    {% endblock %}
+    {% endblock %}
+    {% block foot %}
+    <div id="box11">
+        <a href="#" class="box11_1"><img src="{% static 'first/img/footer_lnks.jpg' %}" alt=""></a>
+        <div class="box11_2"><img src="{% static 'first/img/logo85x90.jpg' %}" alt=""></div>
+        <div class="box11_3">
+                <span>关于我们</span>
+                <div class="box11_3_1"><a href="#" >品牌简介</a></div>
+                <div class="box11_3_2"><a href="#" >市场合作</a></div>
+                <div class="box11_3_3"><a href="#" >诚聘贤才</a></div>
+                <div class="box11_3_4"><a href="#" >联系我们</a></div>
+                <div class="box11_3_5"><a href="#" >商务加盟</a></div>
+            </div>
+        <div class="box11_4">
+                <span>购物指南</span>
+                <div class="box11_4_1"><a href="#" >购物流程</a></div>
+                <div class="box11_4_2"><a href="#" >订单处理时间</a></div>
+                <div class="box11_4_3"><a href="#" >订单查询</a></div>
+                <div class="box11_4_4"><a href="#" >特色商品说明</a></div>
+            </div>
+        <div class="box11_5">
+                <span>支付方式</span>
+                <div class="box11_5_1"><a href="#" >在线支付</a></div>
+                <div class="box11_5_2"><a href="#" >货到付款</a></div>
+                <div class="box11_5_3"><a href="#" >银行汇款</a></div>
+                <div class="box11_5_4"><a href="#" >海外汇款</a></div>
+            </div>
+        <div class="box11_6">
+                <span>配送方式</span>
+                <div class="box11_6_1"><a href="#" >体验中心自提</a></div>
+                <div class="box11_6_2"><a href="#" >全国免费配送</a></div>
+                <div class="box11_6_3"><a href="#" >海外派送</a></div>
+                <div class="box11_6_4"><a href="#" >货品包装</a></div>
+            </div>
+        <div class="box11_7">
+                <span>售后服务</span>
+                <div class="box11_7_1"><a href="#" >售后致策</a></div>
+                <div class="box11_7_2"><a href="#" >15天退换</a></div>
+                <div class="box11_7_3"><a href="#" >以小换大</a></div>
+                <div class="box11_7_4"><a href="#" >优惠换款</a></div>
+            </div>
+        <div class="box11_8"><img src="{% static 'first/img/web_code.jpg' %}" alt=""></div>
+        <div class="box11_9"></div>
+        <div class="box11_10">
+            <ul>
+                <li><a href="#"><img src="{% static 'first/img/fot_certi.gif' %}" alt=""></a></li>
+                <li><a href="#"><img src="{% static 'first/img/fot_certi_02.jpg' %}" alt=""></a></li>
+                <li><a href="#"><img src="{% static 'first/img/fot_certi_03.jpg' %}" alt=""></a></li>
+                <li><a href="#"><img src="{% static 'first/img/fot_certi_04.jpg' %}" alt=""></a></li>
+                <li><a href="#"><img src="{% static 'first/img/picp_bg.png' %}" alt="" width="115" height="37"></a></li>
+            </ul>
+        </div>
+    </div>
+    {% endblock %}
+</body>
+</html>
