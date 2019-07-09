@@ -15,7 +15,7 @@ from django.db.models import Sum
 '''
 
 # 连接数据库
-conn=pymysql.connect(user="root",password="123456",db="bank")
+conn=pymysql.connect(user="root",password="root",db="bank")
 cursor=conn.cursor()
 cursor1=conn.cursor()
 
